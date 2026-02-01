@@ -1,0 +1,109 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-person-table
+      author: Артем
+      changes:
+        - createTable:
+            tableName: person
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 002-create-meeting-table
+      author: Артем
+      changes:
+        - createTable:
+            tableName: meeting
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: time
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: participant_one_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_meeting_participant_one
+                    references: person(id)
+              - column:
+                  name: participant_two_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_meeting_participant_two
+                    references: person(id)
+              - column:
+                  name: is_accepted
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+
+        - createIndex:
+            indexName: idx_meeting_participant_one
+            tableName: meeting
+            columns:
+              - column:
+                  name: participant_one_id
+
+        - createIndex:
+            indexName: idx_meeting_participant_two
+            tableName: meeting
+            columns:
+              - column:
+                  name: participant_two_id
+
+  - changeSet:
+      id: 003-insert-sample-data
+      author: your-name
+      changes:
+        - insert:
+            tableName: person
+            columns:
+              - column:
+                  name: name
+                  value: "Артем"
+              - column:
+                  name: role
+                  value: "CEO"
+        - insert:
+            tableName: person
+            columns:
+              - column:
+                  name: name
+                  value: "Матвей"
+              - column:
+                  name: role
+                  value: "UI/UX designer"
+        - insert:
+            tableName: person
+            columns:
+              - column:
+                  name: name
+                  value: "Ульяна"
+              - column:
+                  name: role
+                  value: "Frontend developer"
