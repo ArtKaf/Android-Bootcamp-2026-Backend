@@ -19,4 +19,10 @@ public class Person {
 
     @Column(name = "role", nullable = false)
     private String role;
+
+    @Column(name = "password", nullable = true)
+    private  String password;
+
+    @Column(name = "login", nullable = false)
+    private String login;
 }

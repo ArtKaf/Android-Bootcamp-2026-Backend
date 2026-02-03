@@ -22,6 +22,17 @@ databaseChangeLog:
                   type: VARCHAR(50)
                   constraints:
                     nullable: false
+              - column:
+                  name: login
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: true
+
 
   - changeSet:
       id: 002-create-meeting-table
@@ -78,7 +89,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 003-insert-sample-data
-      author: your-name
+      author: Артем
       changes:
         - insert:
             tableName: person
@@ -89,6 +100,12 @@ databaseChangeLog:
               - column:
                   name: role
                   value: "CEO"
+              - column:
+                  name: login
+                  value: "ArtKaf"
+              - column:
+                  name: password
+                  value: 111111Kaf
         - insert:
             tableName: person
             columns:
@@ -98,6 +115,13 @@ databaseChangeLog:
               - column:
                   name: role
                   value: "UI/UX designer"
+              - column:
+                  name: login
+                  value: "Matvei"
+              - column:
+                  name: password
+                  value: "1234"
+
         - insert:
             tableName: person
             columns:
@@ -107,3 +131,9 @@ databaseChangeLog:
               - column:
                   name: role
                   value: "Frontend developer"
+              - column:
+                  name: login
+                  value: "Ulyana"
+              - column:
+                  name: password
+                  value: "1010"
