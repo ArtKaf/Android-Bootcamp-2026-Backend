@@ -99,7 +99,7 @@ databaseChangeLog:
                   value: "Артем"
               - column:
                   name: role
-                  value: "CEO"
+                  value: "Backend"
               - column:
                   name: login
                   value: "ArtKaf"
