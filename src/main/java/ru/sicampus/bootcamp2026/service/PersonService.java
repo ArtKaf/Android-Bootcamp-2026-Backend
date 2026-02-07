@@ -29,6 +29,7 @@ public class PersonService {
         person.setName(personDetails.getName());
         person.setRole(personDetails.getRole());
         person.setPassword(personDetails.getPassword());
+        person.setLogin(personDetails.getLogin());
         return personRepository.save(person);
     }
 
